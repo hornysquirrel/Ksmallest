@@ -1,0 +1,30 @@
+#include<iostream>
+#include<algorithm>
+ 
+int main() {
+    long long N;
+    int K;
+    std::cin >> N;
+    std::cin >> K;
+    int R = 0;
+    long long LifeHack[2*K];
+    for(int i = 0; i < 2*K; i++){
+        std::cin >> LifeHack[i];
+    }
+    std::sort(LifeHack, LifeHack + 2*K);
+    for(long long i = 0; i < N - 2*K; i++){
+        if(R < K){
+            std::cin >> LifeHack[R+K];
+            R++;
+        }
+        if(R == K){
+            std::sort(LifeHack, LifeHack + 2*K);
+            R = 0;
+        }
+    }
+    std::sort(LifeHack, LifeHack + 2*K);
+    for(int i = 0; i < K; i++){
+        std::cout << LifeHack[i] << std::endl;
+    }
+    return 0;
+}
